@@ -1,0 +1,69 @@
+.notification-container p{
+    margin:0;
+    padding:0;
+    font-size: 0.75rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.notification-container{
+    width: 200px;
+    position: fixed;
+    margin:10px;
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+    cursor:pointer;
+}
+
+.notification{
+    background-color: white;
+    position: relative;
+    border-radius: 0.25rem;
+    border:1px solid black;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0.75rem;
+}
+.notification::after{
+    content: "\00D7";
+    position: absolute;
+    top:2px;
+    right:5px;
+}
+
+
+/* .notification-container[data-position$="-right"] .notification {
+    transform: translateX(110%);
+}
+  
+.notification-container[data-position$="-left"] .notification {
+    transform: translateX(-110%);
+} */
+  
+/* .notification-container[data-position="top-center"] .notification {
+    transform: translateY(-100vh);
+}
+  
+.notification-container[data-position="bottom-center"] .notification {
+    transform: translateY(100vh);
+} */
+.notification-container[data-position^="top-"] {
+    top: 0;
+}
+  
+.notification-container[data-position^="bottom-"] {
+    bottom: 0;
+}
+  
+.notification-container[data-position$="-right"] {
+    right: 0;
+}
+  
+.notification-container[data-position$="-left"] {
+    left: 0;
+}
+  
+.notification-container[data-position$="-center"] {
+    left: 50%;
+    transform: translateX(-50%);
+}
