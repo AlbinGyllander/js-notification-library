@@ -11,7 +11,7 @@ const ALERT_COLORS = {
     alert:'red',
     warning:'red',
 }
-class notification{
+export default class notification{
     #notificationElement
     #animFrame
     #text
