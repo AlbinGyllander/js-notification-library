@@ -1,3 +1,27 @@
+
+:root{
+    --priorityLevel:blue;
+}
+
+
+.notification{
+    box-sizing: border-box;
+    padding: .75rem;
+    background-color: #ededed;
+    border-left: 3px solid var(--priorityLevel); 
+    border-radius: .25em;
+    position: relative;
+    cursor: pointer;
+    transition: transform 300ms ease-in-out;
+    overflow: hidden;
+    color:black;
+    border-radius: 0.25em;
+}
+/* .notification:hover{
+    box-shadow: 0px 4px 10px 1px rgba(87,87,87,0.24) ;
+} */
+
+
 .notification-container p{
     margin:0;
     padding:0;
@@ -15,38 +39,38 @@
     cursor:pointer;
 }
 
-.notification{
-    background-color: white;
-    position: relative;
-    border-radius: 0.25rem;
-    border:1px solid black;
-    overflow: hidden;
-    box-sizing: border-box;
-    padding: 0.75rem;
-}
+
+
 .notification::after{
     content: "\00D7";
     position: absolute;
     top:2px;
     right:5px;
+    color:var(--priorityLevel);
 }
 
 
-/* .notification-container[data-position$="-right"] .notification {
+.notification-container[data-position$="-right"] .notification {
     transform: translateX(110%);
 }
   
 .notification-container[data-position$="-left"] .notification {
     transform: translateX(-110%);
-} */
+} 
   
-/* .notification-container[data-position="top-center"] .notification {
+.notification-container[data-position="top-center"] .notification {
     transform: translateY(-100vh);
 }
   
 .notification-container[data-position="bottom-center"] .notification {
     transform: translateY(100vh);
-} */
+}
+
+.notification-container .notification.show {
+    
+    transform: translate(0,0);
+}
+
 .notification-container[data-position^="top-"] {
     top: 0;
 }
@@ -67,3 +91,4 @@
     left: 50%;
     transform: translateX(-50%);
 }
+

@@ -4,8 +4,13 @@ const DEFAULT_OPTIONS = {
     timeToShow: 5000,
     autoClose: 3000,
     onClose:true,
+    priorityType: 'standard',
 }
-
+const ALERT_COLORS = {
+    standard:'blue',
+    alert:'red',
+    warning:'red',
+}
 class notification{
     #notificationElement
     #containerElement
@@ -16,10 +21,15 @@ class notification{
     #textElement
     #removeBinded 
     #onClose
+    #priorityType
     
     constructor(options){
         this.#notificationElement = document.createElement("div")
         this.#notificationElement.classList.add('notification')
+        
+        requestAnimationFrame(() =>  {
+            this.#notificationElement.classList.add('show') 
+        })
         this.#textElement = document.createElement('p')
         this.#notificationElement.append(this.#textElement)
         
@@ -51,6 +61,12 @@ class notification{
         }
     }
 
+    set priorityType(value){
+        this.#priorityType = value
+        this.#notificationElement.classList.add(`notification-priority-${this.#priorityType}`)
+        var r = document.querySelector(':root');
+        r.style.setProperty('--priorityLevel', ALERT_COLORS[this.#priorityType]); 
+    }
 
     set autoClose(value){
         this.#autoClose =value
@@ -70,7 +86,10 @@ class notification{
     
     delete(){
         const container = this.#notificationElement.parentElement
-        this.#notificationElement.remove()
+        this.#notificationElement.classList.remove('show')
+        this.#notificationElement.addEventListener('transitionend', () => {
+            this.#notificationElement.remove()
+        })
         if(container.hasChildNodes() == false) container.remove()  
     }
 
@@ -95,10 +114,12 @@ function createContainer(position) {
 
 document.querySelector("button").addEventListener("click", () => {
     const toast = new notification({
-        position: "bottom-center",
-        autoClose:false,
+        position: "top-right",
+        autoClose:3000,
         text:'incorrect login',
         onClose:true,
+        priorityType: 'alert',
+
     })
 })
 
