@@ -108,14 +108,5 @@ function createContainer(position) {
     return container
 }
 
-document.querySelector("button").addEventListener("click", () => {
-    const notificationItem = new notification({
-        position: "top-right",
-        autoClose:3000,
-        text:'incorrect login',
-        close:true,
-        priorityType: 'alert',
 
-    })
-})
 
