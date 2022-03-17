@@ -60,6 +60,7 @@ export default class notification{
         this.#priorityType = value
         this.#notificationElement.classList.add(`notification-priority-${this.#priorityType}`)
         var r = document.querySelector(':root');
+
         r.style.setProperty('--priorityLevel', ALERT_COLORS[this.#priorityType]); 
     }
 
@@ -86,7 +87,7 @@ export default class notification{
             this.#notificationElement.remove()
         })
         
-        if(container!= null && container.hasChildNodes() == false) container.remove()  
+        if(container.hasChildNodes() == false) container.remove()  
     }
 
     update(options) {
