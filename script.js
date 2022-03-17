@@ -13,14 +13,10 @@ const ALERT_COLORS = {
 }
 class notification{
     #notificationElement
-    #containerElement
-    #autoClose
     #animFrame
-    #options
     #text
     #textElement
     #removeBinded 
-    #onClose
     #priorityType
     
     constructor(options){
@@ -34,7 +30,7 @@ class notification{
         this.#notificationElement.append(this.#textElement)
         
         this.#removeBinded = this.delete.bind(this)
-        this.#options = this.update({...DEFAULT_OPTIONS,...options})
+        this.update({...DEFAULT_OPTIONS,...options})
         
     }
     
@@ -53,7 +49,6 @@ class notification{
     }
 
     set onClose(value){
-        this.#onClose = value
         if(value){
             this.#notificationElement.addEventListener("click", this.#removeBinded)
         }else{
@@ -69,7 +64,6 @@ class notification{
     }
 
     set autoClose(value){
-        this.#autoClose =value
         if(value === false)return
         let startTime = 0
         const repeat = time =>{
@@ -90,7 +84,8 @@ class notification{
         this.#notificationElement.addEventListener('transitionend', () => {
             this.#notificationElement.remove()
         })
-        if(container.hasChildNodes() == false) container.remove()  
+        
+        if(container!= null && container.hasChildNodes() == false) container.remove()  
     }
 
     update(options) {
