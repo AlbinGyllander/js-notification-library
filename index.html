@@ -11,9 +11,10 @@
 <body>
     <button>CLICK</button>
 
-    <script type="module" src="https://albingyllander.github.io/js-notification-library/script.js"></script>
+    <!-- <script type="module" src=""></script> -->
     <script>
         document.querySelector("button").addEventListener("click", () => {
+            import notification from "https://albingyllander.github.io/js-notification-library/script.js"
             const available_position = ['top-right','top-left','top-center','bottom-right','bottom-left','bottom-center']
             const available_priority= ['alert','standard','warning']
             const notificationItem = new notification({
