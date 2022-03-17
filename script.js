@@ -3,7 +3,7 @@ const DEFAULT_OPTIONS = {
     text:'default text',
     timeToShow: 5000,
     autoClose: 3000,
-    onClose:true,
+    close:true,
     priorityType: 'standard',
 }
 const ALERT_COLORS = {
@@ -48,7 +48,7 @@ export default class notification{
         this.#textElement.innerHTML = this.#text
     }
 
-    set onClose(value){
+    set close(value){
         if(value){
             this.#notificationElement.addEventListener("click", this.#removeBinded)
         }else{
@@ -78,7 +78,7 @@ export default class notification{
         this.#animFrame = requestAnimationFrame(repeat)
     }
     
-    
+
     delete(){
         const container = this.#notificationElement.parentElement
         this.#notificationElement.classList.remove('show')
@@ -109,11 +109,11 @@ function createContainer(position) {
 }
 
 document.querySelector("button").addEventListener("click", () => {
-    const toast = new notification({
+    const notificationItem = new notification({
         position: "top-right",
         autoClose:3000,
         text:'incorrect login',
-        onClose:true,
+        close:true,
         priorityType: 'alert',
 
     })
