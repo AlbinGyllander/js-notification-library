@@ -78,6 +78,7 @@ export default class notification{
         this.#animFrame = requestAnimationFrame(repeat)
     }
     
+    
     delete(){
         const container = this.#notificationElement.parentElement
         this.#notificationElement.classList.remove('show')
