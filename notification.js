@@ -59,9 +59,10 @@ export default class notification{
     set priorityType(value){
         this.#priorityType = value
         this.#notificationElement.classList.add(`notification-priority-${this.#priorityType}`)
-        var r = document.querySelector(':root');
+        
+        // var r = document.querySelector(':root');
 
-        r.style.setProperty('--priorityLevel', ALERT_COLORS[this.#priorityType]); 
+        // r.style.setProperty('--priorityLevel', ALERT_COLORS[this.#priorityType]); 
     }
 
     set autoClose(value){

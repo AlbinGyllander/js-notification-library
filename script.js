@@ -6,11 +6,11 @@ document.querySelector("button").addEventListener("click", () => {
     const available_priority= ['alert','standard','warning']
     const notificationItem = new notification({
         
-        position: Math.floor(Math.random() * (6  - 1 + 1) + 1),
-        autoClose:3000,
+        position: Math.floor(Math.random() * 6),
+        autoClose:false,
         text:'Incorrect login',
         close:true,
-        priorityType: Math.floor(Math.random() * (3  - 1 + 1) + 1),
+        priorityType: Math.floor(Math.random() * 3),
 
     })
 })

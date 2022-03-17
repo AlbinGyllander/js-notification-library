@@ -8,7 +8,7 @@
     box-sizing: border-box;
     padding: .75rem;
     background-color: #ededed;
-    border-left: 3px solid var(--priorityLevel); 
+    /* border-left: 3px solid var(--priorityLevel);  */
     border-radius: .25em;
     position: relative;
     cursor: pointer;
@@ -46,7 +46,7 @@
     position: absolute;
     top:2px;
     right:5px;
-    color:var(--priorityLevel);
+    color:black;
 }
 
 
@@ -92,3 +92,12 @@
     transform: translateX(-50%);
 }
 
+.notification-priority-standard {
+    border-left: 3px solid blue; 
+}
+.notification-priority-warning {
+    border-left: 3px solid yellow; 
+}
+.notification-priority-alert {
+    border-left: 3px solid red; 
+}
