@@ -3,6 +3,7 @@ const DEFAULT_OPTIONS = {
     text:'default text',
     timeToShow: 5000,
     autoClose: 3000,
+    onClose:true,
 }
 
 class notification{
@@ -13,13 +14,16 @@ class notification{
     #options
     #text
     #textElement
-    
+    #removeBinded 
+    #onClose
     
     constructor(options){
         this.#notificationElement = document.createElement("div")
         this.#notificationElement.classList.add('notification')
         this.#textElement = document.createElement('p')
         this.#notificationElement.append(this.#textElement)
+        
+        this.#removeBinded = this.delete.bind(this)
         this.#options = this.update({...DEFAULT_OPTIONS,...options})
         
     }
@@ -38,7 +42,18 @@ class notification{
         this.#textElement.innerHTML = this.#text
     }
 
+    set onClose(value){
+        this.#onClose = value
+        if(value){
+            this.#notificationElement.addEventListener("click", this.#removeBinded)
+        }else{
+            this.#notificationElement.removeEventListener("click",this.#removeBinded)
+        }
+    }
+
+
     set autoClose(value){
+        this.#autoClose =value
         if(value === false)return
         let startTime = 0
         const repeat = time =>{
@@ -66,6 +81,7 @@ class notification{
         return options
     }
     
+    
 }
 
 
@@ -74,16 +90,15 @@ function createContainer(position) {
     container.classList.add("notification-container")
     container.dataset.position = position
     document.body.append(container)
-    console.log(container)
     return container
 }
 
 document.querySelector("button").addEventListener("click", () => {
-    console.log('ehllo')
     const toast = new notification({
         position: "bottom-center",
         autoClose:false,
-        text:'incorrect login'
-        
+        text:'incorrect login',
+        onClose:true,
     })
 })
+
