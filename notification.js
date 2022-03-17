@@ -86,9 +86,11 @@ export default class notification{
         this.#notificationElement.classList.remove('show')
         this.#notificationElement.addEventListener('transitionend', () => {
             this.#notificationElement.remove()
+            if(container.hasChildNodes()) return 
+            container.remove() 
         })
         
-        if(container.hasChildNodes() == false) container.remove()  
+         
     }
 
     update(options) {
