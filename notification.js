@@ -20,7 +20,6 @@ export default class notification{
     #priorityType
     
     constructor(options){
-        console.log(topbar)
         this.#notificationElement = document.createElement("div")
         this.#notificationElement.classList.add('notification')
         
