@@ -1,10 +1,10 @@
 const DEFAULT_OPTIONS = {
     position: "top-right",
     text:'default text',
-    timeToShow: 5000,
     autoClose: 3000,
     close:true,
-    priorityType: 'standard',
+    priorityType: 'info',
+    topbar:false,
 }
 const ALERT_COLORS = {
     standard:'blue',
@@ -20,6 +20,7 @@ export default class notification{
     #priorityType
     
     constructor(options){
+        console.log(topbar)
         this.#notificationElement = document.createElement("div")
         this.#notificationElement.classList.add('notification')
         
@@ -103,7 +104,6 @@ export default class notification{
     
 }
 
-
 function createContainer(position) {
     const container = document.createElement("div")
     container.classList.add("notification-container")
@@ -111,6 +111,30 @@ function createContainer(position) {
     document.body.append(container)
     return container
 }
+
+// const DEFAULT_OPTIONS_TOPBAR = {
+//     text:'default text',
+//     autoClose: 3000,
+//     close:true,
+// }
+// export default class topNotification{
+//     #toBarElement
+//     #textelement
+//     #removeBinded
+//     constructor(options){
+//         this.#toBarElement = document.createElement("div")
+//         this.#toBarElement.classList.add('topbar-container')
+        
+//         // requestAnimationFrame(() =>  {
+//         //     this.#toBarElement.classList.add('show') 
+//         // })
+//         this.#textElement = document.createElement('p')
+//         this.#toBarElement.append(this.#textElement)
+        
+//         this.#removeBinded = this.delete.bind(this)
+//         this.update({...DEFAULT_OPTIONS_TOPBAR,...options})
+//     }
+// }
 
 
 

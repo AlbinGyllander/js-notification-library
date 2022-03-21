@@ -92,12 +92,15 @@
     transform: translateX(-50%);
 }
 
-.notification-priority-standard {
+.notification-priority-info {
     border-left: 3px solid blue; 
 }
 .notification-priority-warning {
     border-left: 3px solid yellow; 
 }
-.notification-priority-alert {
+.notification-priority-error {
     border-left: 3px solid red; 
+}
+.notification-priority-success {
+    border-left: 3px solid green; 
 }
