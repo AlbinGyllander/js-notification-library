@@ -33,7 +33,7 @@
 
 .notification-container{
     min-width: 200px;
-    width:100%;
+    width:fit-content;
     position: fixed;
     margin:10px;
     display: flex;
